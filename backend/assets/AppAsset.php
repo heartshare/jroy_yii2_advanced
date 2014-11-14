@@ -15,15 +15,46 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot/static/backend';
-    public $baseUrl = '@web/static/backend';
+    public $basePath = '@webroot';
+    public $baseUrl = '@web/static';
     public $css = [
-        'css/site.css',
+
+        'backend/css/bootstrap.css',
+        'vendor/fontawesome/css/font-awesome.min.css',
+        'vendor/animo/animate+animo.css',
+
+        'vendor/csspinner/csspinner.min.css',
+        'backend/css/app.css',
     ];
     public $js = [
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //<!-- START Scripts-->
+        //<!-- Main vendor Scripts-->
+        'vendor/jquery/jquery.min.js',
+        'vendor/bootstrap/js/bootstrap.min.js',
+        //<!-- Plugins-->
+        'vendor/chosen/chosen.jquery.min.js',
+        'vendor/slider/js/bootstrap-slider.js',
+        'vendor/filestyle/bootstrap-filestyle.min.js',
+        //<!-- Animo-->
+        'vendor/animo/animo.min.js',
+        //<!-- Sparklines-->
+        'vendor/sparklines/jquery.sparkline.min.js',
+        //<!-- Slimscroll-->
+        'vendor/slimscroll/jquery.slimscroll.min.js',
+        //<!-- START Page Custom Script-->
+        //<!--  Flot Charts-->
+        /*'vendor/flot/jquery.flot.min.js',
+        'vendor/flot/jquery.flot.tooltip.min.js',
+        'vendor/flot/jquery.flot.resize.min.js',
+        'vendor/flot/jquery.flot.pie.min.js',
+        'vendor/flot/jquery.flot.time.min.js',
+        'vendor/flot/jquery.flot.categories.min.js',*/
+        //<!--[if lt IE 8]>'js/excanvas.min.js'<![endif]-->
+        //<!-- END Page Custom Script-->
+        //<!-- App Main-->
+        'backend/js/app.js',
+        //<!-- END Scripts-->
+
+
     ];
 }
