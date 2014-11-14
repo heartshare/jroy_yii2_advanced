@@ -1,4 +1,5 @@
-<?php namespace backend\controllers;
+<?php
+namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
@@ -6,15 +7,15 @@ use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use backend\models\Category;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
@@ -32,30 +33,20 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
+            [
+            	'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
+            ]
         ];
     }
 
     public function actionIndex()
     {
-        return $this->render('index');
+    	$categories = Category::find()->all();
+        return $this->render('index',['categories'=>$categories]);
     }
 
     public function actionLogin()

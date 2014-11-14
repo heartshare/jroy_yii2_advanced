@@ -29,7 +29,6 @@ class AppAsset extends AssetBundle
     public $js = [
         //<!-- START Scripts-->
         //<!-- Main vendor Scripts-->
-        'vendor/jquery/jquery.min.js',
         'vendor/bootstrap/js/bootstrap.min.js',
         //<!-- Plugins-->
         'vendor/chosen/chosen.jquery.min.js',
